@@ -1,0 +1,1316 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="hospital_world">
+    
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- Configuration de l'éclairage -->
+    <light name='hospital_light_1' type='point'>
+      <pose>0 0 5 0 0 0</pose>
+      <diffuse>1 1 1 1</diffuse>
+      <specular>0.5 0.5 0.5 1</specular>
+      <attenuation>
+        <range>50</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+    </light>
+
+    <!-- ========== STRUCTURE PRINCIPALE DE L'HÔPITAL ========== -->
+    
+    <!-- Mur extérieur Nord avec porte d'entrée principale -->
+    <model name="exterior_wall_north_west">
+      <pose>-10 15 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>10 0.3 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>10 0.3 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.9 0.95 1</ambient>
+            <diffuse>0.9 0.9 0.95 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="exterior_wall_north_east">
+      <pose>10 15 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>10 0.3 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>10 0.3 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.9 0.95 1</ambient>
+            <diffuse>0.9 0.9 0.95 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Mur extérieur Sud -->
+    <model name="exterior_wall_south">
+      <pose>0 -15 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>30 0.3 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>30 0.3 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.9 0.95 1</ambient>
+            <diffuse>0.9 0.9 0.95 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Mur extérieur Est -->
+    <model name="exterior_wall_east">
+      <pose>15 0 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>0.3 30 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>0.3 30 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.9 0.95 1</ambient>
+            <diffuse>0.9 0.9 0.95 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Mur extérieur Ouest -->
+    <model name="exterior_wall_west">
+      <pose>-15 0 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>0.3 30 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>0.3 30 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.9 0.95 1</ambient>
+            <diffuse>0.9 0.9 0.95 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ========== COULOIR PRINCIPAL (Horizontal) ========== -->
+    
+    <!-- Mur couloir principal Nord avec portes vers les salles -->
+    <model name="main_corridor_wall_north_west">
+      <pose>-10 3 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>4 0.2 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>4 0.2 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.95 0.95 1 1</ambient>
+            <diffuse>0.95 0.95 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="main_corridor_wall_north_center">
+      <pose>0 3 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>8 0.2 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>8 0.2 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.95 0.95 1 1</ambient>
+            <diffuse>0.95 0.95 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="main_corridor_wall_north_east">
+      <pose>10 3 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>4 0.2 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>4 0.2 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.95 0.95 1 1</ambient>
+            <diffuse>0.95 0.95 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Mur couloir principal Sud -->
+    <model name="main_corridor_wall_south">
+      <pose>0 -3 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>28 0.2 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>28 0.2 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.95 0.95 1 1</ambient>
+            <diffuse>0.95 0.95 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ========== RÉCEPTION (Zone Ouest) ========== -->
+    
+    <!-- Comptoir de réception -->
+    <model name="reception_desk">
+      <pose>-12 0 0.5 0 0 1.5708</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>3 1.5 1</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>3 1.5 1</size></box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.3 0.2 1</ambient>
+            <diffuse>0.6 0.5 0.4 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Chaises salle d'attente -->
+    <model name="waiting_chair_1">
+      <pose>-10 7 0.25 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>0.5 0.5 0.5</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>0.5 0.5 0.5</size></box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.4 0.8 1</ambient>
+            <diffuse>0.3 0.5 0.9 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="waiting_chair_2">
+      <pose>-10 8.5 0.25 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>0.5 0.5 0.5</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>0.5 0.5 0.5</size></box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.4 0.8 1</ambient>
+            <diffuse>0.3 0.5 0.9 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="waiting_chair_3">
+      <pose>-10 10 0.25 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>0.5 0.5 0.5</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>0.5 0.5 0.5</size></box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.4 0.8 1</ambient>
+            <diffuse>0.3 0.5 0.9 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ========== SALLE DE CONSULTATION 1 (Nord-Ouest) ========== -->
+    
+    <!-- Mur séparation consultation 1 avec PORTE -->
+    <model name="consult1_wall_north">
+      <pose>-7 12 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>6 0.2 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>6 0.2 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.85 0.95 0.85 1</ambient>
+            <diffuse>0.85 0.95 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="consult1_wall_south">
+      <pose>-7 6 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>6 0.2 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>6 0.2 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.85 0.95 0.85 1</ambient>
+            <diffuse>0.85 0.95 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="consult1_wall_west">
+      <pose>-10 9 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>0.2 6 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>0.2 6 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.85 0.95 0.85 1</ambient>
+            <diffuse>0.85 0.95 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- PORTE de la consultation 1 (entre -4 et -4) -->
+    <!-- Espace vide pour la porte : de x=-5 à x=-1, y=9 -->
+
+    <!-- Bureau médecin consultation 1 -->
+    <model name="consult1_desk">
+      <pose>-11 11 0.4 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>1.5 0.8 0.8</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>1.5 0.8 0.8</size></box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.4 0.3 1</ambient>
+            <diffuse>0.6 0.5 0.4 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Lit consultation 1 -->
+    <model name="consult1_bed">
+      <pose>-11 7 0.3 0 0 1.5708</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>2 1 0.6</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>2 1 0.6</size></box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.9 0.9 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ========== SALLE DE CONSULTATION 2 (Centre-Nord) ========== -->
+    
+    <!-- Mur séparation consultation 2 Ouest avec PORTE -->
+    <model name="consult2_wall_north">
+      <pose>-1 12 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>6 0.2 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>6 0.2 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.85 0.95 0.85 1</ambient>
+            <diffuse>0.85 0.95 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="consult2_wall_south">
+      <pose>-1 6 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>6 0.2 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>6 0.2 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.85 0.95 0.85 1</ambient>
+            <diffuse>0.85 0.95 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="consult2_wall_west">
+      <pose>-4 9 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>0.2 3 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>0.2 3 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.85 0.95 0.85 1</ambient>
+            <diffuse>0.85 0.95 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="consult2_wall_east_part1">
+      <pose>2 11 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>0.2 2 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>0.2 2 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.85 0.95 0.85 1</ambient>
+            <diffuse>0.85 0.95 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="consult2_wall_east_part2">
+      <pose>2 7 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>0.2 2 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>0.2 2 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.85 0.95 0.85 1</ambient>
+            <diffuse>0.85 0.95 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- PORTE de la consultation 2 (entre x=2, y=9) -->
+    <!-- Espace vide pour la porte : x=2, y entre 8 et 10 -->
+
+    <!-- Bureau consultation 2 -->
+    <model name="consult2_desk">
+      <pose>-1 11 0.4 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>1.5 0.8 0.8</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>1.5 0.8 0.8</size></box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.4 0.3 1</ambient>
+            <diffuse>0.6 0.5 0.4 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Lit consultation 2 -->
+    <model name="consult2_bed">
+      <pose>-1 7 0.3 0 0 1.5708</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>2 1 0.6</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>2 1 0.6</size></box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.9 0.9 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ========== SALLE DE CONSULTATION 3 (Nord-Est) ========== -->
+    
+    <!-- Mur séparation consultation 3 avec PORTE -->
+    <model name="consult3_wall_north">
+      <pose>7 12 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>6 0.2 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>6 0.2 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.85 0.95 0.85 1</ambient>
+            <diffuse>0.85 0.95 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="consult3_wall_south">
+      <pose>7 6 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>6 0.2 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>6 0.2 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.85 0.95 0.85 1</ambient>
+            <diffuse>0.85 0.95 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="consult3_wall_east">
+      <pose>10 9 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>0.2 6 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>0.2 6 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.85 0.95 0.85 1</ambient>
+            <diffuse>0.85 0.95 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- PORTE de la consultation 3 (entre x=4 et x=4) -->
+    <!-- Espace vide pour la porte : de x=4 à x=10, y=9 -->
+
+    <!-- Bureau consultation 3 -->
+    <model name="consult3_desk">
+      <pose>10 11 0.4 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>1.5 0.8 0.8</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>1.5 0.8 0.8</size></box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.4 0.3 1</ambient>
+            <diffuse>0.6 0.5 0.4 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Lit consultation 3 -->
+    <model name="consult3_bed">
+      <pose>10 7 0.3 0 0 1.5708</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>2 1 0.6</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>2 1 0.6</size></box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.9 0.9 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ========== SALLE D'URGENCE (Sud-Ouest) ========== -->
+    
+    <!-- Mur séparation urgence avec PORTE -->
+    <model name="emergency_wall_north">
+      <pose>-7 -6 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>6 0.2 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>6 0.2 2</size></box>
+          </geometry>
+          <material>
+            <ambient>1 0.85 0.85 1</ambient>
+            <diffuse>1 0.9 0.9 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="emergency_wall_south">
+      <pose>-7 -12 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>6 0.2 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>6 0.2 2</size></box>
+          </geometry>
+          <material>
+            <ambient>1 0.85 0.85 1</ambient>
+            <diffuse>1 0.9 0.9 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="emergency_wall_west">
+      <pose>-10 -9 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>0.2 6 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>0.2 6 2</size></box>
+          </geometry>
+          <material>
+            <ambient>1 0.85 0.85 1</ambient>
+            <diffuse>1 0.9 0.9 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- PORTE des urgences (entre x=-4 et x=-4) -->
+    <!-- Espace vide pour la porte : de x=-4 à x=-4, y=-9 -->
+
+    <!-- Table d'opération urgence -->
+    <model name="emergency_table">
+      <pose>-11 -8 0.5 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>2 1 1</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>2 1 1</size></box>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.85 1</ambient>
+            <diffuse>0.9 0.9 0.95 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Équipement médical urgence -->
+    <model name="emergency_equipment">
+      <pose>-11 -11 0.6 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>0.8 0.8 1.2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>0.8 0.8 1.2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.4 0.4 0.4 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ========== LABORATOIRE (Sud-Centre) ========== -->
+    
+    <!-- Mur séparation labo avec PORTE -->
+    <model name="lab_wall_north">
+      <pose>-1 -6 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>6 0.2 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>6 0.2 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.85 0.9 1 1</ambient>
+            <diffuse>0.9 0.95 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="lab_wall_south">
+      <pose>-1 -12 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>6 0.2 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>6 0.2 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.85 0.9 1 1</ambient>
+            <diffuse>0.9 0.95 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="lab_wall_west_part1">
+      <pose>-4 -11 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>0.2 2 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>0.2 2 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.85 0.9 1 1</ambient>
+            <diffuse>0.9 0.95 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="lab_wall_west_part2">
+      <pose>-4 -7 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>0.2 2 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>0.2 2 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.85 0.9 1 1</ambient>
+            <diffuse>0.9 0.95 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="lab_wall_east_part1">
+      <pose>2 -11 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>0.2 2 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>0.2 2 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.85 0.9 1 1</ambient>
+            <diffuse>0.9 0.95 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="lab_wall_east_part2">
+      <pose>2 -7 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>0.2 2 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>0.2 2 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.85 0.9 1 1</ambient>
+            <diffuse>0.9 0.95 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- PORTE du labo (entre x=-4 et x=2, y=-9) -->
+    <!-- Espace vide pour la porte : x entre -4 et 2, y=-9 -->
+
+    <!-- Tables de laboratoire -->
+    <model name="lab_table_1">
+      <pose>-1 -7 0.4 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>2.5 1 0.8</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>2.5 1 0.8</size></box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.9 0.9 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="lab_table_2">
+      <pose>-1 -11 0.4 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>2.5 1 0.8</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>2.5 1 0.8</size></box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.9 0.9 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Équipement labo -->
+    <model name="lab_equipment">
+      <pose>-1 -9 0.9 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>0.5 0.5 0.6</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>0.5 0.5 0.6</size></box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ========== PHARMACIE (Sud-Est) ========== -->
+    
+    <!-- Mur séparation pharmacie avec PORTE -->
+    <model name="pharmacy_wall_north">
+      <pose>7 -6 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>6 0.2 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>6 0.2 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.95 1 0.85 1</ambient>
+            <diffuse>0.95 1 0.9 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="pharmacy_wall_south">
+      <pose>7 -12 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>6 0.2 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>6 0.2 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.95 1 0.85 1</ambient>
+            <diffuse>0.95 1 0.9 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="pharmacy_wall_east">
+      <pose>10 -9 1 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>0.2 6 2</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>0.2 6 2</size></box>
+          </geometry>
+          <material>
+            <ambient>0.95 1 0.85 1</ambient>
+            <diffuse>0.95 1 0.9 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- PORTE de la pharmacie (entre x=4 et x=4) -->
+    <!-- Espace vide pour la porte : de x=4 à x=10, y=-9 -->
+
+    <!-- Comptoir pharmacie -->
+    <model name="pharmacy_counter">
+      <pose>10 -6 0.5 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>3 1 1</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>3 1 1</size></box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.4 0.3 1</ambient>
+            <diffuse>0.6 0.5 0.4 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Étagères pharmacie -->
+    <model name="pharmacy_shelf_1">
+      <pose>12 -10 0.8 0 0 1.5708</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>4 0.4 1.6</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>4 0.4 1.6</size></box>
+          </geometry>
+          <material>
+            <ambient>0.6 0.5 0.4 1</ambient>
+            <diffuse>0.7 0.6 0.5 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="pharmacy_shelf_2">
+      <pose>8 -10 0.8 0 0 1.5708</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>4 0.4 1.6</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>4 0.4 1.6</size></box>
+          </geometry>
+          <material>
+            <ambient>0.6 0.5 0.4 1</ambient>
+            <diffuse>0.7 0.6 0.5 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ========== OBSTACLES DYNAMIQUES (Chariots, etc.) ========== -->
+    
+    <!-- Chariot médical 1 -->
+    <model name="medical_cart_1">
+      <pose>3 0 0.4 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>0.6 0.4 0.8</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>0.6 0.4 0.8</size></box>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.9 0.9 0.9 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Chariot médical 2 -->
+    <model name="medical_cart_2">
+      <pose>-5 0 0.4 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>0.6 0.4 0.8</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>0.6 0.4 0.8</size></box>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.9 0.9 0.9 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Fauteuils roulants -->
+    <model name="wheelchair_1">
+      <pose>-8 -5 0.3 0 0 0.785</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>0.7 0.6 0.6</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>0.7 0.6 0.6</size></box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.4 0.4 0.4 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Distributeur automatique -->
+    <model name="vending_machine">
+      <pose>13 0 0.9 0 0 -1.5708</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>0.8 1 1.8</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>0.8 1 1.8</size></box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.5 0.7 1</ambient>
+            <diffuse>0.4 0.6 0.8 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Plantes décoratives -->
+    <model name="plant_1">
+      <pose>-13 5 0.4 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.3</radius>
+              <length>0.8</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.3</radius>
+              <length>0.8</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.2 0.6 0.2 1</ambient>
+            <diffuse>0.3 0.7 0.3 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="plant_2">
+      <pose>13 5 0.4 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.3</radius>
+              <length>0.8</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.3</radius>
+              <length>0.8</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.2 0.6 0.2 1</ambient>
+            <diffuse>0.3 0.7 0.3 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Signalisation -->
+    <model name="sign_emergency">
+      <pose>-7 -3.5 1.5 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box><size>0.05 1 0.5</size></box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0.2 0.2 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="sign_pharmacy">
+      <pose>5 -3.5 1.5 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box><size>0.05 1 0.5</size></box>
+          </geometry>
+          <material>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0.2 1 0.2 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+  </world>
+</sdf>

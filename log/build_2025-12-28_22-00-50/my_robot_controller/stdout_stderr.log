@@ -1,0 +1,58 @@
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/lacina/Last_ros/build/my_robot_controller
+-- Install configuration: ""
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/description
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/description/robot.urdf.xacro
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/launch
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/launch/launch_navigation.launch.py
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/launch/launch_sim.launch.py
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/launch/launch_slam.launch.py
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/config
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/config/my_controllers.yaml
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/config/mapper_params_online_async.yaml
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/config/nav2_params.yaml
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/rviz
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/rviz/slam_view.rviz
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/rviz/robot_view.rviz
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/rviz/nav2_view.rviz
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/web_interface
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/web_interface/templates
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/web_interface/templates/control_interface.html
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/web_interface/static
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/web_interface/web_control_interface.py
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/worlds
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/worlds/hospital_world.world
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/scripts
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/scripts/save_map.sh
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/lib/my_robot_controller/web_control_interface.py
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/lib/my_robot_controller/save_map.sh
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/ament_index/resource_index/package_run_dependencies/my_robot_controller
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/ament_index/resource_index/parent_prefix_path/my_robot_controller
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/environment/ament_prefix_path.sh
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/environment/ament_prefix_path.dsv
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/environment/path.sh
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/environment/path.dsv
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/local_setup.bash
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/local_setup.sh
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/local_setup.zsh
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/local_setup.dsv
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/package.dsv
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/ament_index/resource_index/packages/my_robot_controller
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/cmake/my_robot_controllerConfig.cmake
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/cmake/my_robot_controllerConfig-version.cmake
+-- Installing: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/package.xml

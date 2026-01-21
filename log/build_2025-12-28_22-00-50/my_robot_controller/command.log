@@ -1,0 +1,6 @@
+Invoking command in '/home/lacina/Last_ros/build/my_robot_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/lacina/Last_ros/src/my_robot_controller -DCMAKE_INSTALL_PREFIX=/home/lacina/Last_ros/install/my_robot_controller
+Invoked command in '/home/lacina/Last_ros/build/my_robot_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/lacina/Last_ros/src/my_robot_controller -DCMAKE_INSTALL_PREFIX=/home/lacina/Last_ros/install/my_robot_controller
+Invoking command in '/home/lacina/Last_ros/build/my_robot_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/lacina/Last_ros/build/my_robot_controller -- -j2 -l2
+Invoked command in '/home/lacina/Last_ros/build/my_robot_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/lacina/Last_ros/build/my_robot_controller -- -j2 -l2
+Invoking command in '/home/lacina/Last_ros/build/my_robot_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/lacina/Last_ros/build/my_robot_controller
+Invoked command in '/home/lacina/Last_ros/build/my_robot_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/lacina/Last_ros/build/my_robot_controller

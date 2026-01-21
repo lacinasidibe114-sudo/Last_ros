@@ -1,0 +1,6 @@
+[31mCMake Error at cmake_install.cmake:46 (file):
+  file INSTALL cannot find
+  "/home/lacina/Last_ros/src/my_robot_controller/nav2_web_interface": No such
+  file or directory.
+
+[0m

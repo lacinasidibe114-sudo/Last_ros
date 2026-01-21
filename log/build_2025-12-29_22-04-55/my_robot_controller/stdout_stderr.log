@@ -1,0 +1,36 @@
+-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/lacina/Last_ros/build/my_robot_controller
+-- Install configuration: ""
+-- Up-to-date: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/description
+-- Up-to-date: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/description/robot.urdf.xacro
+-- Up-to-date: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/launch
+-- Up-to-date: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/launch/launch_navigation.launch.py
+-- Up-to-date: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/launch/launch_sim.launch.py
+-- Up-to-date: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/launch/launch_slam.launch.py
+-- Up-to-date: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/config
+-- Up-to-date: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/config/my_controllers.yaml
+-- Up-to-date: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/config/mapper_params_online_async.yaml
+-- Up-to-date: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/config/nav2_params.yaml
+-- Up-to-date: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/rviz
+-- Up-to-date: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/rviz/slam_view.rviz
+-- Up-to-date: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/rviz/robot_view.rviz
+-- Up-to-date: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/rviz/nav2_view.rviz
+-- Up-to-date: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/web_interface
+-- Up-to-date: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/web_interface/nav2_web_interface.py
+-- Up-to-date: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/web_interface/templates
+-- Up-to-date: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/web_interface/templates/control_interface.html
+-- Up-to-date: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/web_interface/static
+-- Up-to-date: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/web_interface/web_control_interface.py
+-- Up-to-date: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/web_interface/nav2_hospital_interface.py
+-- Up-to-date: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/worlds
+-- Up-to-date: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/worlds/hospital_world.world
+-- Up-to-date: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/scripts
+-- Up-to-date: /home/lacina/Last_ros/install/my_robot_controller/share/my_robot_controller/scripts/save_map.sh
+[31mCMake Error at cmake_install.cmake:46 (file):
+  file INSTALL cannot find
+  "/home/lacina/Last_ros/src/my_robot_controller/nav2_web_interface": No such
+  file or directory.
+
+[0m

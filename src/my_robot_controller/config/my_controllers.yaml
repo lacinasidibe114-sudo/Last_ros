@@ -1,0 +1,24 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 30
+    
+    # 1. Le Diff Drive (Roues)
+    diff_cont:
+      type: diff_drive_controller/DiffDriveController
+
+    # 2. Le Joint State Broadcaster (États)
+    joint_broad:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+# Configuration du Diff Drive
+diff_cont:
+  ros__parameters:
+    left_wheel_names: ["front_left_joint", "rear_left_joint"]
+    right_wheel_names: ["front_right_joint", "rear_right_joint"]
+    wheel_separation: 0.35
+    wheel_radius: 0.05
+    use_stamped_vel: false
+    publish_rate: 50.0
+    base_frame_id: base_link
+    odom_frame_id: odom
+    enable_odom_tf: true

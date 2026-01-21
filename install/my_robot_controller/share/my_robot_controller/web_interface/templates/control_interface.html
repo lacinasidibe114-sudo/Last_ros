@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 Contrôle Robot ROS2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .robot-icon {
+            font-size: 1.2em;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .status {
+            display: inline-block;
+            padding: 8px 20px;
+            background: #4ade80;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .control-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .control-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            font-size: 2em;
+            padding: 30px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .control-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        .control-btn:active {
+            transform: translateY(-2px);
+        }
+
+        .control-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .control-btn:active::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .control-btn.pressed {
+            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+            transform: scale(0.95);
+        }
+
+        .empty-cell {
+            background: transparent;
+        }
+
+        .stop-btn {
+            grid-column: 2;
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .stop-btn:hover {
+            box-shadow: 0 10px 25px rgba(239, 68, 68, 0.6);
+        }
+
+        .speed-controls {
+            background: #f3f4f6;
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        .speed-controls h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .speed-slider {
+            margin-bottom: 20px;
+        }
+
+        .speed-slider label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: #4b5563;
+            font-weight: 600;
+        }
+
+        .speed-slider input[type="range"] {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #d1d5db;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .speed-slider input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .speed-slider input[type="range"]::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .feedback {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 15px;
+            background: #e0e7ff;
+            color: #667eea;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feedback.show {
+            opacity: 1;
+        }
+
+        .keyboard-hint {
+            text-align: center;
+            margin-top: 20px;
+            color: #6b7280;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .control-btn {
+                padding: 20px;
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>
+                <span class="robot-icon">🤖</span>
+                Contrôle Robot
+            </h1>
+            <span class="status">● En ligne</span>
+        </div>
+
+        <div class="control-grid">
+            <!-- Row 1 -->
+            <button class="control-btn" data-command="forward_left" title="Avant Gauche">↖</button>
+            <button class="control-btn" data-command="forward" title="Avant">↑</button>
+            <button class="control-btn" data-command="forward_right" title="Avant Droite">↗</button>
+            
+            <!-- Row 2 -->
+            <button class="control-btn" data-command="left" title="Gauche">←</button>
+            <button class="control-btn stop-btn" data-command="stop" title="Stop">STOP</button>
+            <button class="control-btn" data-command="right" title="Droite">→</button>
+            
+            <!-- Row 3 -->
+            <button class="control-btn" data-command="backward_left" title="Arrière Gauche">↙</button>
+            <button class="control-btn" data-command="backward" title="Arrière">↓</button>
+            <button class="control-btn" data-command="backward_right" title="Arrière Droite">↘</button>
+        </div>
+
+        <div class="speed-controls">
+            <h3>⚙️ Réglage des Vitesses</h3>
+            
+            <div class="speed-slider">
+                <label>
+                    <span>Vitesse Linéaire</span>
+                    <span id="linear-value">0.5 m/s</span>
+                </label>
+                <input type="range" id="linear-speed" min="0.1" max="2.0" step="0.1" value="0.5">
+            </div>
+            
+            <div class="speed-slider">
+                <label>
+                    <span>Vitesse Angulaire</span>
+                    <span id="angular-value">1.0 rad/s</span>
+                </label>
+                <input type="range" id="angular-speed" min="0.1" max="3.0" step="0.1" value="1.0">
+            </div>
+        </div>
+
+        <div class="feedback" id="feedback"></div>
+
+        <div class="keyboard-hint">
+            💡 Astuce: Utilisez les touches fléchées du clavier!
+        </div>
+    </div>
+
+    <script>
+        // Feedback message
+        function showFeedback(message) {
+            const feedback = document.getElementById('feedback');
+            feedback.textContent = message;
+            feedback.classList.add('show');
+            setTimeout(() => {
+                feedback.classList.remove('show');
+            }, 2000);
+        }
+
+        // Send command to robot
+        async function sendCommand(command) {
+            try {
+                const response = await fetch('/control', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ command: command })
+                });
+                
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    showFeedback(`✓ Commande: ${command}`);
+                } else {
+                    showFeedback(`✗ Erreur: ${data.message}`);
+                }
+            } catch (error) {
+                showFeedback('✗ Erreur de connexion');
+                console.error('Error:', error);
+            }
+        }
+
+        // Update speed
+        async function updateSpeed() {
+            const linear = document.getElementById('linear-speed').value;
+            const angular = document.getElementById('angular-speed').value;
+            
+            try {
+                const response = await fetch('/set_speed', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        linear: parseFloat(linear),
+                        angular: parseFloat(angular)
+                    })
+                });
+                
+                const data = await response.json();
+                if (data.status === 'success') {
+                    showFeedback('⚙️ Vitesses mises à jour');
+                }
+            } catch (error) {
+                console.error('Error updating speed:', error);
+            }
+        }
+
+        // Button event listeners
+        document.querySelectorAll('.control-btn').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('pressed');
+                sendCommand(button.dataset.command);
+            });
+            
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('pressed');
+                if (button.dataset.command !== 'stop') {
+                    sendCommand('stop');
+                }
+            });
+            
+            button.addEventListener('mouseleave', () => {
+                button.classList.remove('pressed');
+                if (button.dataset.command !== 'stop') {
+                    sendCommand('stop');
+                }
+            });
+        });
+
+        // Speed slider event listeners
+        document.getElementById('linear-speed').addEventListener('input', function() {
+            document.getElementById('linear-value').textContent = this.value + ' m/s';
+        });
+
+        document.getElementById('angular-speed').addEventListener('input', function() {
+            document.getElementById('angular-value').textContent = this.value + ' rad/s';
+        });
+
+        document.getElementById('linear-speed').addEventListener('change', updateSpeed);
+        document.getElementById('angular-speed').addEventListener('change', updateSpeed);
+
+        // Keyboard controls
+        const keyMap = {
+            'ArrowUp': 'forward',
+            'ArrowDown': 'backward',
+            'ArrowLeft': 'left',
+            'ArrowRight': 'right',
+            ' ': 'stop',
+            'w': 'forward',
+            's': 'backward',
+            'a': 'left',
+            'd': 'right'
+        };
+
+        let currentKey = null;
+
+        document.addEventListener('keydown', (e) => {
+            if (keyMap[e.key] && currentKey !== e.key) {
+                e.preventDefault();
+                currentKey = e.key;
+                sendCommand(keyMap[e.key]);
+                
+                // Visual feedback
+                const buttons = document.querySelectorAll('.control-btn');
+                buttons.forEach(btn => {
+                    if (btn.dataset.command === keyMap[e.key]) {
+                        btn.classList.add('pressed');
+                    }
+                });
+            }
+        });
+
+        document.addEventListener('keyup', (e) => {
+            if (keyMap[e.key]) {
+                e.preventDefault();
+                currentKey = null;
+                if (keyMap[e.key] !== 'stop') {
+                    sendCommand('stop');
+                }
+                
+                // Remove visual feedback
+                const buttons = document.querySelectorAll('.control-btn');
+                buttons.forEach(btn => btn.classList.remove('pressed'));
+            }
+        });
+    </script>
+</body>
+</html>

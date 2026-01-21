@@ -1,0 +1,12 @@
+image: hospital_map.pgm
+resolution: 0.05
+origin: [-16.0, -16.0, 0.0]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.196
+
+# Carte de l'hôpital HospiBot
+# Générée automatiquement à partir du monde Gazebo
+# Dimensions: 32.0m x 32.0m
+# Résolution: 0.05m/pixel (5cm/pixel)
+# Image: 640x640 pixels

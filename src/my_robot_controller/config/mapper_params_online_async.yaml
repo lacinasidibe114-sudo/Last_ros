@@ -1,0 +1,122 @@
+slam_toolbox:
+  ros__parameters:
+    # ========================================================================
+    # CONFIGURATION SLAM ANTI-DÉRIVE OPTIMALE
+    # ========================================================================
+    # Spécialement conçue pour compenser la dérive d'odométrie
+    # et fonctionner dans des environnements uniformes (hôpitaux, couloirs)
+    # ========================================================================
+    
+    # Plugin params
+    solver_plugin: solver_plugins::CeresSolver
+    ceres_linear_solver: SPARSE_NORMAL_CHOLESKY
+    ceres_preconditioner: SCHUR_JACOBI
+    ceres_trust_strategy: LEVENBERG_MARQUARDT
+    ceres_dogleg_type: TRADITIONAL_DOGLEG
+    ceres_loss_function: None
+    
+    # ========================================================================
+    # FRAMES
+    # ========================================================================
+    odom_frame: odom
+    map_frame: map
+    base_frame: base_link
+    scan_topic: /scan
+    use_map_saver: true
+    mode: mapping
+    
+    # ========================================================================
+    # TIMING - Corrections TRÈS fréquentes pour compenser dérive
+    # ========================================================================
+    map_update_interval: 0.5          # 🔥 2x par seconde (au lieu de 2.0)
+    transform_publish_period: 0.02    # 50 Hz - OK
+    transform_timeout: 1.0            # 🔥 Tolérant aux délais
+    tf_buffer_duration: 30.0          # Buffer 30s
+    minimum_time_interval: 0.1        # 🔥 Très réactif (au lieu de 0.5)
+    
+    # ========================================================================
+    # RÉSOLUTION
+    # ========================================================================
+    resolution: 0.05                  # 5cm - Bon compromis
+    max_laser_range: 12.0             # Portée LiDAR
+    stack_size_to_use: 40000000       # 40 MB
+    
+    # ========================================================================
+    # SCANS - Enregistrer BEAUCOUP pour compenser dérive
+    # ========================================================================
+    minimum_travel_distance: 0.08     # 🔥 Enregistre tous les 8cm
+    minimum_travel_heading: 0.08      # 🔥 Sensible aux rotations
+    scan_buffer_size: 40              # 🔥 4x l'historique normal
+    scan_buffer_maximum_scan_distance: 25.0  # 🔥 Zone très large
+    
+    # ========================================================================
+    # LOOP CLOSURE - Configuration ANTI-DÉRIVE
+    # ========================================================================
+    # Ces paramètres permettent à SLAM de corriger agressivement
+    # les erreurs d'odométrie via des loop closures permissives
+    # ========================================================================
+    do_loop_closing: true             # CRITIQUE
+    
+    # Distance de recherche MAXIMALE
+    loop_search_maximum_distance: 10.0  # 🔥🔥 Cherche jusqu'à 10m
+    
+    # Seuils BAS pour compenser dérive importante
+    loop_match_minimum_chain_size: 4    # 🔥 Minimum absolu (était 10)
+    loop_match_maximum_variance_coarse: 5.0   # 🔥 Très tolérant (était 3.0)
+    loop_match_minimum_response_coarse: 0.12  # 🔥🔥 Seuil très bas (était 0.35)
+    loop_match_minimum_response_fine: 0.20    # 🔥🔥 Seuil très bas (était 0.45)
+    
+    # ========================================================================
+    # CORRESPONDANCE - Permissive pour environnements uniformes
+    # ========================================================================
+    link_match_minimum_response_fine: 0.04  # 🔥 Très sensible (était 0.1)
+    link_scan_maximum_distance: 4.0   # 🔥 Liens longue distance (était 1.5)
+    
+    # ========================================================================
+    # ESPACES DE RECHERCHE - LARGES pour compenser dérive
+    # ========================================================================
+    correlation_search_space_dimension: 1.0    # 🔥 Augmenté (était 0.5)
+    correlation_search_space_resolution: 0.01  # OK
+    correlation_search_space_smear_deviation: 0.1  # OK
+    
+    loop_search_space_dimension: 20.0  # 🔥🔥 TRÈS LARGE (était 8.0)
+    loop_search_space_resolution: 0.05 # OK
+    loop_search_space_smear_deviation: 0.03  # OK
+    
+    # ========================================================================
+    # PÉNALITÉS - MINIMALES pour tolérer dérive
+    # ========================================================================
+    distance_variance_penalty: 0.15   # 🔥 Très peu strict (était 0.5)
+    angle_variance_penalty: 0.3       # 🔥 Très peu strict (était 1.0)
+    
+    # ========================================================================
+    # RECHERCHE ANGULAIRE
+    # ========================================================================
+    fine_search_angle_offset: 0.00349     # ~0.2° - OK
+    coarse_search_angle_offset: 0.349     # ~20° - OK
+    coarse_angle_resolution: 0.0349       # ~2° - OK
+    minimum_angle_penalty: 0.5        # 🔥 Réduit (était 0.9)
+    minimum_distance_penalty: 0.2     # 🔥 Réduit (était 0.5)
+    use_response_expansion: true      # OK
+    
+    # ========================================================================
+    # ADDITIONNELS
+    # ========================================================================
+    throttle_scans: 1                 # Traiter tous les scans
+    map_start_pose: [0.0, 0.0, 0.0]   # Position de départ
+    map_start_at_dock: true           # Commencer au dock
+    
+    # ========================================================================
+    # RÉSUMÉ DES OPTIMISATIONS ANTI-DÉRIVE :
+    # ========================================================================
+    # ✅ map_update_interval: 0.5s → Corrections 4x plus fréquentes
+    # ✅ minimum_travel_distance: 0.08m → 2.5x plus de scans
+    # ✅ scan_buffer_size: 40 → 4x plus d'historique
+    # ✅ loop_search_maximum_distance: 10m → Cherche 3x plus loin
+    # ✅ loop_match_minimum_response_fine: 0.20 → Seuil -56%
+    # ✅ loop_search_space_dimension: 20m → Zone 2.5x plus grande
+    # ✅ distance_variance_penalty: 0.15 → Tolérance 3x supérieure
+    #
+    # Cette configuration compense agressivement la dérive d'odométrie
+    # en permettant des loop closures même avec des décalages importants
+    # ========================================================================

@@ -1,0 +1,6 @@
+[31mCMake Error at cmake_install.cmake:59 (file):
+  file INSTALL cannot find
+  "/home/lacina/Last_ros/src/my_robot_controller/nav2_web_interface/unified_hospital_controller.py":
+  No such file or directory.
+
+[0m
